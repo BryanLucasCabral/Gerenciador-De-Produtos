@@ -35,4 +35,14 @@ public class ProdutosServices {
     public void deletarProdutos(Long id){
         produtosRepository.deleteById(id);
     }
+
+    public ProdutosDTO buscarProdutoPeloId(Long id){
+        Optional<Produtos> produtosOpt = produtosRepository.findById(id);
+
+        if (produtosOpt.isPresent()) {
+            return produtosOpt.get().toDTO()
+        }
+
+        return null;
+    }
 }
