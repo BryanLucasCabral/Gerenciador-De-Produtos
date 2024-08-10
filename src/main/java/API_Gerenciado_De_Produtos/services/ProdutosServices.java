@@ -40,7 +40,22 @@ public class ProdutosServices {
         Optional<Produtos> produtosOpt = produtosRepository.findById(id);
 
         if (produtosOpt.isPresent()) {
-            return produtosOpt.get().toDTO()
+            return produtosOpt.get().toDTO();
+        }
+
+        return null;
+    }
+
+    public Produtos atualizarProdutos(Long id, Produtos dadosProdutos){
+        Optional<Produtos> produtosOpt = produtosRepository.findById(id);
+        
+        if (produtosOpt.isPresent()) {
+            Produtos produtos = produtosOpt.get();
+
+            produtos.setNome(dadosProdutos.getNome());
+            produtos.setDescricao(dadosProdutos.getDescricao());
+
+            return produtosRepository.save(produtos);
         }
 
         return null;
