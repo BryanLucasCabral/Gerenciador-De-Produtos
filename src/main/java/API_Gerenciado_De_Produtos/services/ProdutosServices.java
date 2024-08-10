@@ -28,7 +28,11 @@ public class ProdutosServices {
         return null;
     }
 
-    public Page<ProdutosDTO> listarUsuarios(Pageable paginacao){
+    public Page<ProdutosDTO> listarProdutos(Pageable paginacao){
         return produtosRepository.findAll(paginacao).map(produtos -> produtos.toDTO());
+    }
+
+    public void deletarProdutos(Long id){
+        produtosRepository.deleteById(id);
     }
 }

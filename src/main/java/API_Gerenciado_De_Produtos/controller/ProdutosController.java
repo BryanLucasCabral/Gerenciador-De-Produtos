@@ -29,8 +29,8 @@ public class ProdutosController {
     } 
 
     @GetMapping
-    public ResponseEntity<Page<ProdutosDTO>> listarUsuarios(
+    public ResponseEntity<Page<ProdutosDTO>> listarProdutos(
         @PageableDefault(size = 10, page = 1, sort = "nome", direction = Direction.DESC) Pageable paginacao){
-            return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarUsuarios(paginacao));
+            return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarProdutos(paginacao));
         }
 }
