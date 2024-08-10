@@ -2,6 +2,8 @@ package API_Gerenciado_De_Produtos.services;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,12 @@ public class ProdutosServices {
     private ProdutosRepository produtosRepository;
 
     public Produtos salvarProdutos(Produtos produtos){
-        return produtosRepository.save(produtos);
+        Optional<Produtos> produtosOpt = produtosRepository.findByNome(produtos.getNome());
+
+        if (produtosOpt.isPresent()) {
+            return produtosRepository.save(produtos);
+        }
+
+        return null;
     }
 }
