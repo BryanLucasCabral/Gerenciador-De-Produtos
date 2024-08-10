@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +51,7 @@ public class ProdutosController {
         return ResponseEntity.status(HttpStatus.OK).body(produtos);
     }
 
-    @DeleteMapping("id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarProdutos(@PathVariable("id") Long id){
         ProdutosDTO produtos = produtosServices.buscarProdutoPeloId(id);
 
@@ -60,5 +61,15 @@ public class ProdutosController {
 
         produtosServices.deletarProdutos(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produtos> atualizarProdutos(@PathVariable("id") Long id, @RequestBody Produtos dadosProdutos){
+        ProdutosDTO produtos = produtosServices.buscarProdutoPeloId(id);
+
+        if (Objects.isNull(produtos)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(produtosServices.atualizarProdutos(id, dadosProdutos));
     }
 }
