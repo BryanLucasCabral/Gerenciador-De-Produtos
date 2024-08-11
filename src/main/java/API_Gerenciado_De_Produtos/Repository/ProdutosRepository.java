@@ -10,4 +10,6 @@ import API_Gerenciado_De_Produtos.model.Produtos;
 @Repository
 public interface ProdutosRepository extends JpaRepository <Produtos, Long>{
     Optional<Produtos> findByNome(String nome);
+
+    Optional<Produtos> findByMarca(String nome);
 }
