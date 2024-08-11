@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,9 @@ public class ProdutosController {
     } 
 
     @GetMapping
-    public ResponseEntity<Page<ProdutosDTO>> listarProdutos(
-        @PageableDefault(size = 10, page = 1, sort = "nome", direction = Direction.DESC) Pageable paginacao){
-            return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarProdutos(paginacao));
-        }
+    public ResponseEntity<List<Produtos>> listarProdutos(){
+        return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarProdutos());
+    }
     
     @GetMapping("/{id}")
     public ResponseEntity<ProdutosDTO> buscarUsuarioPeloId(@PathVariable("id") Long id){

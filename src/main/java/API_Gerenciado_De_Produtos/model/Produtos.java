@@ -43,6 +43,8 @@ public class Produtos {
         dto.setId(id);
         dto.setNome(nome);
         dto.setDescricao(descricao);
+        dto.setMarca(marca);
+        dto.setStatus(status);
 
         return dto;
     }
