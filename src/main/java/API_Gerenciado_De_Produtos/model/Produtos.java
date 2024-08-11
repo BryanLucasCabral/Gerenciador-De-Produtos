@@ -27,6 +27,8 @@ public class Produtos {
     @Column(name = "DESC_PRODUTOS", nullable = false)
     private String descricao;
 
+    private String marca;
+
     public ProdutosDTO toDTO(){
         ProdutosDTO dto = new ProdutosDTO();
 
