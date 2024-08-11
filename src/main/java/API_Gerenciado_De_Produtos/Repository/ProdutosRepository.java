@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,5 @@ import API_Gerenciado_De_Produtos.model.Produtos;
 public interface ProdutosRepository extends JpaRepository <Produtos, Long>{
     Optional<Produtos> findByNome(String nome);
 
-    Optional<Produtos> findByMarca(String nome);
+    List<Produtos> findByMarcaLike(String nome);
 }

@@ -25,6 +25,10 @@ public class ProdutosServices {
         return produtosRepository.findAll();
     }
 
+    public List<Produtos> listarMarcas(String marca){
+        return produtosRepository.findByMarcaLike(marca);
+    }
+
     public void deletarProdutos(Long id){
         produtosRepository.deleteById(id);
     }
