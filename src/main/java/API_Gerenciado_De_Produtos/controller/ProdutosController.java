@@ -29,7 +29,7 @@ public class ProdutosController {
 
     @PostMapping
     public ResponseEntity<Produtos> salvaProdutos(@RequestBody Produtos produtos){
-        return ResponseEntity.status(HttpStatus.OK).body(produtosServices.salvarProdutos(produtos));
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtosServices.salvarProdutos(produtos));
     } 
 
     @GetMapping
@@ -37,7 +37,7 @@ public class ProdutosController {
         return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarProdutos());
     } 
 
-    @GetMapping("/filtro")
+    @GetMapping("/filtro/{marca}")
     public ResponseEntity<List<Produtos>> listarProdutosDasMarcas(@RequestParam("marca") String marca){
         return ResponseEntity.status(HttpStatus.OK).body(produtosServices.listarProdutosDasMarcas(marca));
     }
@@ -72,6 +72,7 @@ public class ProdutosController {
         if (Objects.isNull(produtos)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+        dadosProdutos.setId(id);
         return ResponseEntity.status(HttpStatus.OK).body(produtosServices.atualizarProdutos(id, dadosProdutos));
     }
 }

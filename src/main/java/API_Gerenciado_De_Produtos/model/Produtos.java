@@ -27,7 +27,7 @@ public class Produtos {
     @Column(name = "NOME_PRODUTOS", nullable = false, unique = false)
     private String nome;
 
-    @Column(name = "DESC_PRODUTOS", nullable = false)
+    @Column(name = "DESC_PRODUTOS", nullable = false, columnDefinition = "TEXT")
     private String descricao;
 
     @Column(name = "MARCA_PRODUTOS", nullable = false)
