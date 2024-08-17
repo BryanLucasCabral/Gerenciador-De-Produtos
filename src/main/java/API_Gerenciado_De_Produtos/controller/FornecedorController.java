@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +43,17 @@ public class FornecedorController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(fornecedor);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Fornecedor> atualizarFornecedor(@PathVariable("id") Long id, Fornecedor dadosFornecedor){
+        FornecedorDTO fornecedor = fornecedoresServices.buscarFornecedorPeloId(id);
+
+        if (Objects.isNull(fornecedor)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        dadosFornecedor.setId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.atualizarFornecedor(id, dadosFornecedor));
     }
 }
