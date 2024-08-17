@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.model;
 
+import API_Gerenciado_De_Produtos.dto.FornecedorDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,6 @@ import lombok.NoArgsConstructor;
 public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
     @Column(nullable = false, length = 150)
@@ -24,4 +24,15 @@ public class Fornecedor {
 
     @Column(nullable = false)
     private String cnpj;
+
+    public FornecedorDTO toDTO(){
+        FornecedorDTO dto = new FornecedorDTO();
+
+        dto.setCnpj(cnpj);
+        dto.setNome(nome);
+        dto.setId(id);
+
+        return dto;
+
+    }
 }
