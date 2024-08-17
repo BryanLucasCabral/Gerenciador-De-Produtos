@@ -1,6 +1,10 @@
 package API_Gerenciado_De_Produtos.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,5 +22,9 @@ public class FornecedorController {
 
     public ResponseEntity<Fornecedor> salvarFornecedor(@RequestBody Fornecedor fornecedor){
         return ResponseEntity.status(HttpStatus.CREATED).body(fornecedoresServices.salvarFornecedor(fornecedor));
+    }
+
+    public ResponseEntity<Page<Fornecedor>> listarFornecedores(@PageableDefault(size = 10, page = 1, sort = "nome", direction = Direction.DESC) Pageable paginacao){
+        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.listarFornecedores(paginacao));
     }
 }
