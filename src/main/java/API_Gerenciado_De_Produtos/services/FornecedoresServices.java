@@ -20,7 +20,7 @@ public class FornecedoresServices {
         return fornecedorRepository.save(fornecedor);
     }
 
-    public Page<Fornecedor> listarProdutos(Pageable paginacao){
+    public Page<Fornecedor> listarFornecedores(Pageable paginacao){
         return fornecedorRepository.findAll(paginacao);
     }
 
