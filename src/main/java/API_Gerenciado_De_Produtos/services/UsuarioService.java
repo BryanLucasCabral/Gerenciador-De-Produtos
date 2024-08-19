@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class UsuarioService {
             return usuarioOpt.get().toDTO();
         }
         return null;
+    }
+
+    public List<UsuarioDTO> buscarUsuarioPeloEmail(String email){
+         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+
+         return usuarioOpt.stream().map(Usuario::toDTO).toList();
+
     }
     
     public void deletarUsuarios(Long id){
