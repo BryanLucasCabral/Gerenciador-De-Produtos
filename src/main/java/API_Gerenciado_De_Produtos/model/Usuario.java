@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.model;
 
+import API_Gerenciado_De_Produtos.dto.UsuarioDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,4 +24,12 @@ public class Usuario {
     @Column(name = "NOME_USUARIO")
     private String name;
 
+
+    public UsuarioDTO toDTO (){
+        UsuarioDTO dto = new UsuarioDTO();
+
+        dto.setName(name);
+
+        return dto;
+    }
 }
