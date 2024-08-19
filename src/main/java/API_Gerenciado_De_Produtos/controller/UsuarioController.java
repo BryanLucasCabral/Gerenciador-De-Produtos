@@ -40,7 +40,7 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO> buscarUsuario(@PathVariable("id") Long id) {
-        UsuarioDTO usuario = usuarioService.buscarUsuarioPeloId(id);
+        UsuarioDTO usuario = usuarioService.buscarUsuarioPeloId(id); 
 
         if (Objects.isNull(usuario)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
