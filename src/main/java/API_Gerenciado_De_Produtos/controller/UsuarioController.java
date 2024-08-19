@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import API_Gerenciado_De_Produtos.dto.FornecedorDTO;
+
 import API_Gerenciado_De_Produtos.dto.UsuarioDTO;
-import API_Gerenciado_De_Produtos.model.Fornecedor;
+
 import API_Gerenciado_De_Produtos.model.Usuario;
 import API_Gerenciado_De_Produtos.services.UsuarioService;
 
