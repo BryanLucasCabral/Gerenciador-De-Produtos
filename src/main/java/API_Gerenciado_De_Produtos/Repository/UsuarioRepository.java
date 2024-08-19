@@ -8,6 +8,6 @@ import API_Gerenciado_De_Produtos.model.Usuario;
  * UsuarioRepository
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-
+    
     
 }
