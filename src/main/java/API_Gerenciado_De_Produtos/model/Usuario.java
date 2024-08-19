@@ -24,6 +24,9 @@ public class Usuario {
     @Column(name = "NOME_USUARIO")
     private String name;
 
+    @Column(name = "EMAIL_USUARIO")
+    private String email;
+
 
     public UsuarioDTO toDTO (){
         UsuarioDTO dto = new UsuarioDTO();
