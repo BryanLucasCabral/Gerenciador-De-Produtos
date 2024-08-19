@@ -1,7 +1,7 @@
 package API_Gerenciado_De_Produtos.Repository;
 
 
-import java.util.Optional;
+import java.util.List;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +13,5 @@ import API_Gerenciado_De_Produtos.model.Usuario;
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     
-    Optional<Usuario> findByNomeContains(String nome);
+   List<Usuario> findByNomeContains(String nome);
 }
