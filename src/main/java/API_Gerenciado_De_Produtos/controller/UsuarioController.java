@@ -1,5 +1,6 @@
 package API_Gerenciado_De_Produtos.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import API_Gerenciado_De_Produtos.dto.UsuarioDTO;
 import API_Gerenciado_De_Produtos.model.Usuario;
@@ -56,6 +58,11 @@ public class UsuarioController {
 
         dadosUsuario.setId(id);
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizarUsuario(id, dadosUsuario));
+    }
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<UsuarioDTO>> buscarUsuarioPeloNome(@RequestParam("nome")String nome){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.buscarUsuarioPeloNome(nome));
     }
 
      @DeleteMapping("/{id}")
