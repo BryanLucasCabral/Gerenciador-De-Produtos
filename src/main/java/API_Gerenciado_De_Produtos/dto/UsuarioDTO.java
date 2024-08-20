@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class UsuarioDTO {
     private Long id;
     private String name;
+    private String email;
 }
