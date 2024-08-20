@@ -32,6 +32,7 @@ public class Usuario {
         UsuarioDTO dto = new UsuarioDTO();
 
         dto.setName(name);
+        dto.setEmail(email);
 
         return dto;
     }
